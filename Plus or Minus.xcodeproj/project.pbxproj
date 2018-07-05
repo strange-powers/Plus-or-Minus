@@ -13,6 +13,8 @@
 		FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC54881320EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld */; };
 		FC54881720EC194B007BB6CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC54881620EC194B007BB6CE /* Assets.xcassets */; };
 		FC54881A20EC194B007BB6CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC54881820EC194B007BB6CE /* LaunchScreen.storyboard */; };
+		FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */; };
+		FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FC54881620EC194B007BB6CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC54881920EC194B007BB6CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC54881B20EC194B007BB6CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		FC54880B20EC194A007BB6CE /* Plus or Minus */ = {
 			isa = PBXGroup;
 			children = (
+				FC54882920EEB5DE007BB6CE /* Model */,
 				FC54880C20EC194A007BB6CE /* AppDelegate.swift */,
 				FC54880E20EC194A007BB6CE /* ViewController.swift */,
 				FC54881020EC194A007BB6CE /* Main.storyboard */,
@@ -65,6 +70,23 @@
 				FC54881320EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld */,
 			);
 			path = "Plus or Minus";
+			sourceTree = "<group>";
+		};
+		FC54882920EEB5DE007BB6CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC54882A20EEB5E5007BB6CE /* CD */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC54882A20EEB5E5007BB6CE /* CD */ = {
+			isa = PBXGroup;
+			children = (
+				FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */,
+				FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */,
+			);
+			path = CD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */,
 				FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */,
 				FC54880F20EC194A007BB6CE /* ViewController.swift in Sources */,
+				FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */,
 				FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
