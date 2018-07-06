@@ -41,5 +41,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         scrollView.clipsToBounds = false
         scrollView.contentSize = CGSize(width: scrollWidth * itemCount, height: scrollView.frame.size.height)
     }
+    
+    @IBAction func dateBtnClicked() {
+        print(dayIndex)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        dayIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+    }
 }
 
