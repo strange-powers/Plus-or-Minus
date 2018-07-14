@@ -9,6 +9,12 @@
 import UIKit
 
 extension UIView {
+    /**
+     Creates a circle out of the given UIView object
+     
+     - Parameters:
+        - view: the UIView object which should become a circle
+    */
     static func makeCircleFrom(_ view: UIView) {
         view.layer.cornerRadius = view.frame.size.width / 2
         view.clipsToBounds = true
