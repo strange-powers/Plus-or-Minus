@@ -8,34 +8,71 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIScrollViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var lastScrollViewContentOffset: CGFloat = 0.0
-    var dayIndex = 0
+    /*
+     TODO: there will be a caching problem if the user does not shut down the app after every week
+     */
+    /// Stores the days of the current week in an Date array
+    lazy var weekDays: [Date] = {
+        return Calendar.current.getWeekDates(from: Date())
+    }()
+    
+    /// Generates the days name of the weekDays array
+    var dayNames: [String] {
+        get {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            
+            let dayNames = weekDays.compactMap {
+                formatter.string(from: $0)
+            }
+            
+            return dayNames
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
+        setUpScrollView()
+    }
+    
+    /**
+     Creates and configures a day button with the name given in the arguments
+     
+     - Parameters:
+        - name: The name of the day
+     
+     - Returns: A configured DayButton object
+     */
+    private func createDayButton(with name: String) -> DayButton {
+        let dayInitials = String(name.prefix(3))
+        let circleBtn = DayButton(withDayName: dayInitials)
+        circleBtn.addTarget(self, action: #selector(dateBtnClicked), for: .touchDown)
         
+        return circleBtn
+    }
+    
+    
+    /**
+     Creates and configures a day button with the name given in the arguments
+    */
+    private func setUpScrollView() {
         let scrollWidth = scrollView.frame.size.width
         var itemCount: CGFloat = 0
         
-        for i in 0...2 {
+        for dayName in dayNames {
+            let newX = scrollWidth / 2 + scrollWidth * CGFloat(itemCount)
+            
+            let dayBtn = createDayButton(with: dayName)
+            dayBtn.frame.origin.x = newX - (dayBtn.frame.width / 2)
+            dayBtn.frame.origin.y = (scrollView.frame.size.height / 2) - (dayBtn.frame.height / 2)
+            scrollView.addSubview(dayBtn)
+            
             itemCount = itemCount + 1
-            
-            let newX = scrollWidth / 2 + scrollWidth * CGFloat(i)
-            
-            let circleFrame = CGRect(x: newX - 100, y: (scrollView.frame.size.height / 2) - 100, width: 200, height: 200)
-            let circleBtn = DayButton(frame: circleFrame)
-            
-            circleBtn.setTitle("Yalla", for: .normal)
-            
-            circleBtn.addTarget(self, action: #selector(dateBtnClicked), for: .touchDown)
-            
-            scrollView.addSubview(circleBtn)
         }
         
         scrollView.clipsToBounds = false
@@ -43,11 +80,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func dateBtnClicked() {
-        print(dayIndex)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        dayIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        let dayIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        
     }
 }
 

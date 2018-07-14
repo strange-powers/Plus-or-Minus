@@ -15,6 +15,9 @@
 		FC54881A20EC194B007BB6CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC54881820EC194B007BB6CE /* LaunchScreen.storyboard */; };
 		FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */; };
 		FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */; };
+		FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883020F00743007BB6CE /* UIView+makeCircle.swift */; };
+		FC54883320F0280E007BB6CE /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883220F0280E007BB6CE /* DayButton.swift */; };
+		FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FC54881B20EC194B007BB6CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FC54883020F00743007BB6CE /* UIView+makeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+makeCircle.swift"; sourceTree = "<group>"; };
+		FC54883220F0280E007BB6CE /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
+		FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekDays+Calendar.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,8 @@
 		FC54880B20EC194A007BB6CE /* Plus or Minus */ = {
 			isa = PBXGroup;
 			children = (
+				FC5FF26A20F962DB0087646D /* Utils */,
+				FC54882F20F00720007BB6CE /* View */,
 				FC54882920EEB5DE007BB6CE /* Model */,
 				FC54880C20EC194A007BB6CE /* AppDelegate.swift */,
 				FC54880E20EC194A007BB6CE /* ViewController.swift */,
@@ -87,6 +95,23 @@
 				FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */,
 			);
 			path = CD;
+			sourceTree = "<group>";
+		};
+		FC54882F20F00720007BB6CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC54883020F00743007BB6CE /* UIView+makeCircle.swift */,
+				FC54883220F0280E007BB6CE /* DayButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC5FF26A20F962DB0087646D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,11 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
 				FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */,
 				FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */,
 				FC54880F20EC194A007BB6CE /* ViewController.swift in Sources */,
+				FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */,
 				FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */,
 				FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */,
+				FC54883320F0280E007BB6CE /* DayButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
