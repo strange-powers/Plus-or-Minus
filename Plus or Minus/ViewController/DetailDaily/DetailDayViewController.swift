@@ -8,12 +8,17 @@
 
 import UIKit
 
-class DetailDayViewController: UIViewController {
+class DetailDayViewController: UIViewController, UITableViewDelegate {
     
     var day: Date!
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
     }
-
+    
+    
 }
