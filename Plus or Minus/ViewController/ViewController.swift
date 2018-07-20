@@ -81,7 +81,17 @@ class ViewController: UIViewController {
     
     @IBAction func dateBtnClicked() {
         let dayIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
-        
+        performSegue(withIdentifier: "toDayDetail", sender: weekDays[dayIndex])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDayDetail" {
+            if let detailDayVC = segue.destination as? DetailDayViewController {
+                if let day = sender as? Date {
+                    detailDayVC.day = day
+                }
+            }
+        }
     }
 }
 

@@ -18,6 +18,7 @@
 		FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883020F00743007BB6CE /* UIView+makeCircle.swift */; };
 		FC54883320F0280E007BB6CE /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883220F0280E007BB6CE /* DayButton.swift */; };
 		FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */; };
+		FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9621025964008AF64C /* DetailDayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FC54883020F00743007BB6CE /* UIView+makeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+makeCircle.swift"; sourceTree = "<group>"; };
 		FC54883220F0280E007BB6CE /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekDays+Calendar.swift"; sourceTree = "<group>"; };
+		FCDD2E9621025964008AF64C /* DetailDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +68,11 @@
 		FC54880B20EC194A007BB6CE /* Plus or Minus */ = {
 			isa = PBXGroup;
 			children = (
+				FCDD2E932102555A008AF64C /* ViewController */,
 				FC5FF26A20F962DB0087646D /* Utils */,
 				FC54882F20F00720007BB6CE /* View */,
 				FC54882920EEB5DE007BB6CE /* Model */,
 				FC54880C20EC194A007BB6CE /* AppDelegate.swift */,
-				FC54880E20EC194A007BB6CE /* ViewController.swift */,
 				FC54881020EC194A007BB6CE /* Main.storyboard */,
 				FC54881620EC194B007BB6CE /* Assets.xcassets */,
 				FC54881820EC194B007BB6CE /* LaunchScreen.storyboard */,
@@ -112,6 +114,15 @@
 				FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FCDD2E932102555A008AF64C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC54880E20EC194A007BB6CE /* ViewController.swift */,
+				FCDD2E9621025964008AF64C /* DetailDayViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
+				FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */,
 				FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */,
 				FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */,
 				FC54880F20EC194A007BB6CE /* ViewController.swift in Sources */,
