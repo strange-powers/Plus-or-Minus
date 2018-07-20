@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CurrentWeekViewController.swift
 //  Plus or Minus
 //
 //  Created by Julian Vöst on 03.07.18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CurrentWeekViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
