@@ -35,7 +35,11 @@ class DayActionDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "") {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "DayActionCell") as? DayActionTableViewCell {
+            let action = _actions[indexPath.row]
+            
+            cell.prepareCellWithData(from: action)
+            
             return cell
         }
         

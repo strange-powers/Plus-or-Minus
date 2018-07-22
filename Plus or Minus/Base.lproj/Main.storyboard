@@ -29,7 +29,6 @@
         <!--Current Week View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="CurrentWeekViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TYB-8N-ICM"/>
@@ -59,13 +58,14 @@
                         <segue destination="aeH-EM-P74" kind="show" identifier="toDayDetail" id="Xct-yv-eYa"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-127" y="100"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Day View Controller-->
         <scene sceneID="jE5-E6-zJu">
             <objects>
-                <viewController id="aeH-EM-P74" sceneMemberID="viewController">
+                <viewController id="aeH-EM-P74" customClass="DetailDayViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vPl-4M-4LB"/>
                         <viewControllerLayoutGuide type="bottom" id="Fi2-0c-8xm"/>
@@ -80,15 +80,18 @@
                                     <constraint firstAttribute="height" constant="27" id="Blb-LO-7gC"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Good Actions"/>
+                                    <segment title="Bad Actions"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeActionConclusion:" destination="aeH-EM-P74" eventType="valueChanged" id="Rpa-oh-Lvo"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S9Z-WQ-K6h">
                                 <rect key="frame" x="0.0" y="91" width="375" height="576"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="apR-8y-o5y">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayActionCell" id="apR-8y-o5y" customClass="DayActionTableViewCell" customModule="Plus_or_Minus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="apR-8y-o5y" id="YBE-ad-XAb">
@@ -104,6 +107,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="A1C-j7-aMc" id="fOj-lg-zPe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -119,6 +125,10 @@
                             <constraint firstItem="S9Z-WQ-K6h" firstAttribute="leading" secondItem="dS5-YH-ft1" secondAttribute="leading" id="yU1-KS-0uo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="segmentControl" destination="uOZ-4u-qrU" id="yj6-Uf-9iX"/>
+                        <outlet property="tableView" destination="S9Z-WQ-K6h" id="ewF-ET-xFw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eS-Go-JPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
