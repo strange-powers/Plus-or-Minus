@@ -19,7 +19,6 @@
 		FC54883320F0280E007BB6CE /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883220F0280E007BB6CE /* DayButton.swift */; };
 		FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */; };
 		FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9621025964008AF64C /* DetailDayViewController.swift */; };
-		FCDD2E9B21026AE7008AF64C /* DayActionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9A21026AE7008AF64C /* DayActionDataSource.swift */; };
 		FCDD2E9D210272A1008AF64C /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9C210272A1008AF64C /* constants.swift */; };
 		FCDD2EA121027BB2008AF64C /* DayActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2EA021027BB2008AF64C /* DayActionController.swift */; };
 		FCDD2EA3210528EF008AF64C /* DayActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2EA2210528EF008AF64C /* DayActionTableViewCell.swift */; };
@@ -40,7 +39,6 @@
 		FC54883220F0280E007BB6CE /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekDays+Calendar.swift"; sourceTree = "<group>"; };
 		FCDD2E9621025964008AF64C /* DetailDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDayViewController.swift; sourceTree = "<group>"; };
-		FCDD2E9A21026AE7008AF64C /* DayActionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActionDataSource.swift; sourceTree = "<group>"; };
 		FCDD2E9C210272A1008AF64C /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		FCDD2EA021027BB2008AF64C /* DayActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActionController.swift; sourceTree = "<group>"; };
 		FCDD2EA2210528EF008AF64C /* DayActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActionTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,27 +127,10 @@
 		FCDD2E932102555A008AF64C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCDD2E9821026A68008AF64C /* DetailDaily */,
+				FCDD2E9621025964008AF64C /* DetailDayViewController.swift */,
 				FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		FCDD2E9821026A68008AF64C /* DetailDaily */ = {
-			isa = PBXGroup;
-			children = (
-				FCDD2E9921026AA8008AF64C /* DataSource */,
-				FCDD2E9621025964008AF64C /* DetailDayViewController.swift */,
-			);
-			path = DetailDaily;
-			sourceTree = "<group>";
-		};
-		FCDD2E9921026AA8008AF64C /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				FCDD2E9A21026AE7008AF64C /* DayActionDataSource.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 		FCDD2E9E21027B72008AF64C /* DayAction */ = {
@@ -243,7 +224,6 @@
 				FCDD2EA121027BB2008AF64C /* DayActionController.swift in Sources */,
 				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
 				FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */,
-				FCDD2E9B21026AE7008AF64C /* DayActionDataSource.swift in Sources */,
 				FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */,
 				FCDD2EA3210528EF008AF64C /* DayActionTableViewCell.swift in Sources */,
 				FCDD2E9D210272A1008AF64C /* constants.swift in Sources */,
