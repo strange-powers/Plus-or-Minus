@@ -20,7 +20,7 @@ class DayActionController {
      
      - Returns: The found DayAction objects in an Array
      */
-    func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate) -> [DayAction] {
+    func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?) -> [DayAction] {
         let fetchRequest: NSFetchRequest<DayAction> = DayAction.fetchRequest()
         var actions = [DayAction]()
         
