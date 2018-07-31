@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="-127" y="100"/>
         </scene>
-        <!--Detail Day View Controller-->
+        <!--Title-->
         <scene sceneID="jE5-E6-zJu">
             <objects>
                 <viewController id="aeH-EM-P74" customClass="DetailDayViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,14 +125,89 @@
                             <constraint firstItem="S9Z-WQ-K6h" firstAttribute="leading" secondItem="dS5-YH-ft1" secondAttribute="leading" id="yU1-KS-0uo"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Zi2-mb-8VD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CLk-Jn-g8X">
+                            <connections>
+                                <action selector="addNewDayAction" destination="aeH-EM-P74" id="vWo-zW-HO9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentControl" destination="uOZ-4u-qrU" id="yj6-Uf-9iX"/>
                         <outlet property="tableView" destination="S9Z-WQ-K6h" id="ewF-ET-xFw"/>
+                        <segue destination="xFF-Lh-Ro6" kind="show" identifier="toNewAction" id="iqS-jf-qPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eS-Go-JPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1053.5999999999999" y="100.29985007496252"/>
+        </scene>
+        <!--New Action View Controller-->
+        <scene sceneID="peH-gp-nR4">
+            <objects>
+                <viewController id="xFF-Lh-Ro6" customClass="NewActionViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sMb-JE-vg9"/>
+                        <viewControllerLayoutGuide type="bottom" id="bO6-sV-BKP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mWi-Gx-u8r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-Wh-lxj">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jca-A0-Mdd"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T5w-1W-Fz7">
+                                <rect key="frame" x="-4" y="607" width="383" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5d-Zd-sjS">
+                                        <rect key="frame" x="0.0" y="0.0" width="191.5" height="60"/>
+                                        <color key="backgroundColor" red="0.12549019610000001" green="0.81568627449999997" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Add to good"/>
+                                        <connections>
+                                            <action selector="addNewAction:" destination="xFF-Lh-Ro6" eventType="touchUpInside" id="GlB-U6-3ty"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QR-Ph-ZDa">
+                                        <rect key="frame" x="191.5" y="0.0" width="191.5" height="60"/>
+                                        <color key="backgroundColor" red="0.82491283156663675" green="0.31970753872273283" blue="0.33035753078080971" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Add to bad"/>
+                                        <connections>
+                                            <action selector="addNewAction:" destination="xFF-Lh-Ro6" eventType="touchUpInside" id="a6m-pf-2du"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7dt-sO-yVc"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2nb-Wh-lxj" firstAttribute="top" secondItem="sMb-JE-vg9" secondAttribute="bottom" constant="8" id="8LQ-Gt-669"/>
+                            <constraint firstItem="2nb-Wh-lxj" firstAttribute="leading" secondItem="mWi-Gx-u8r" secondAttribute="leadingMargin" id="9gd-pe-6LB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T5w-1W-Fz7" secondAttribute="trailing" constant="-20" id="bXU-i0-3Rs"/>
+                            <constraint firstItem="T5w-1W-Fz7" firstAttribute="leading" secondItem="mWi-Gx-u8r" secondAttribute="leadingMargin" constant="-20" id="j03-2P-RIi"/>
+                            <constraint firstItem="bO6-sV-BKP" firstAttribute="top" secondItem="T5w-1W-Fz7" secondAttribute="bottom" id="mDW-ae-VFB"/>
+                            <constraint firstItem="2nb-Wh-lxj" firstAttribute="trailing" secondItem="mWi-Gx-u8r" secondAttribute="trailingMargin" id="yGj-Yu-TV1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HTJ-ZP-z0K"/>
+                    <connections>
+                        <outlet property="descTxtField" destination="2nb-Wh-lxj" id="qb0-MG-2x5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSe-bY-Jb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2197.5999999999999" y="99.400299850074973"/>
         </scene>
     </scenes>
 </document>

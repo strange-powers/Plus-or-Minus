@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     
     /// day of which actions shall be shown up
@@ -16,7 +17,8 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     
     /// data for the table view
     private var actions = [[DayAction]]()
-
+    private let actionController = DayActionController()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
@@ -24,6 +26,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         setUpActions()
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -59,6 +62,8 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
      Creates and loads the datasource objects with the model
      */
     private func setUpActions() {
+        actions.removeAll()
+        
         let loadedActions = loadActions()
         
         let goodActions = loadedActions.compactMap { (dayAction) -> DayAction? in
@@ -78,19 +83,40 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
             return nil
         }
         actions.append(badActions)
-        
     }
     
     /**
      Loads the DayActions from CoreData
      */
-    func loadActions() -> [DayAction] {
-        let descriptor = NSSortDescriptor(key: "day", ascending: true)
-        let actionController = DayActionController()
+    private func loadActions() -> [DayAction] {
+        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        let predicate = NSPredicate(format: "day = %@", day as NSDate)
         
-        let actions = actionController.fetchData(with: [descriptor], and: nil)
+        let actions = actionController.fetchData(with: [descriptor], and: predicate)
+        actionController.controller.delegate = self
+        
         
         return actions
+    }
+    
+    @IBAction func addNewDayAction() {
+        performSegue(withIdentifier: "toNewAction", sender: day)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewAction" {
+            if let newActionVC = segue.destination as? NewActionViewController {
+                if let day = sender as? Date {
+                    newActionVC.day = day
+                }
+            }
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setUpActions()
+        
+        tableView.reloadData()
     }
     
 }
