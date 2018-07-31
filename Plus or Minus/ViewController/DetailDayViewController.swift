@@ -11,7 +11,6 @@ import CoreData
 
 class DetailDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    
     /// day of which actions shall be shown up
     var day: Date!
     
@@ -63,10 +62,10 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
      */
     private func setUpActions() {
         actions.removeAll()
+        loadActions()
+        let dayActions = actionController.dayActions
         
-        let loadedActions = loadActions()
-        
-        let goodActions = loadedActions.compactMap { (dayAction) -> DayAction? in
+        let goodActions = dayActions.compactMap { (dayAction) -> DayAction? in
             if dayAction.conclusion {
                 return dayAction
             }
@@ -75,7 +74,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         actions.append(goodActions)
         
-        let badActions = loadedActions.compactMap { (dayAction) -> DayAction? in
+        let badActions = dayActions.compactMap { (dayAction) -> DayAction? in
             if !dayAction.conclusion {
                 return dayAction
             }
@@ -88,17 +87,15 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     /**
      Loads the DayActions from CoreData
      */
-    private func loadActions() -> [DayAction] {
+    private func loadActions() {
         let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         let predicate = NSPredicate(format: "day = %@", day as NSDate)
-        
-        let actions = actionController.fetchData(with: [descriptor], and: predicate)
-        actionController.controller.delegate = self
-        
-        
-        return actions
+        actionController.fetchData(with: [descriptor], and: predicate, tell: self)
     }
     
+    /**
+     Performs the Segue to a ViewController to add new day actions
+    */
     @IBAction func addNewDayAction() {
         performSegue(withIdentifier: "toNewAction", sender: day)
     }
@@ -113,6 +110,9 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    /**
+     Reloads the table if there was a change in the database
+    */
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setUpActions()
         

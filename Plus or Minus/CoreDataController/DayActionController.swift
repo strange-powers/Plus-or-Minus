@@ -17,39 +17,51 @@ class DayActionController {
     static let DESC_KEY = "desc"
     static let CREATED_AT_KEY = "createdAt"
     
-    var controller: NSFetchedResultsController<DayAction>!
+    private var controller: NSFetchedResultsController<DayAction>!
+    
+    var dayActions: [DayAction] {
+        get {
+            if let actions = controller.fetchedObjects {
+                return actions
+            }
+            
+            return [DayAction]()
+        }
+    }
     
     /**
-     Returns all found DayAction objects which have been saved into CoreData which match the NSpredicate. It can be sorted by the given sort descriptors
+     Fetches all found DayAction objects which have been saved into CoreData which match the NSpredicate. It can be sorted by the given sort descriptors
      
      - Parameters:
         - sortDescriptors: sort descriptors which sort the fetched data
-        - predicate: a predicate to limit the DayAction objectss
-     
-     - Returns: The found DayAction objects in an Array
+        - predicate: a predicate to limit the DayAction objects
+        - delegate: the delegate object for the NSFetchdResultsController
      */
-    func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?) -> [DayAction] {
+    func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?, tell delegate: NSFetchedResultsControllerDelegate?) {
         let fetchRequest: NSFetchRequest<DayAction> = DayAction.fetchRequest()
-        var actions = [DayAction]()
         
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = sortDescriptors
         
         controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = delegate
         
         do {
             try controller.performFetch()
-            if let acts = controller.fetchedObjects {
-                actions = acts
-            }
         } catch {
             let error = error as NSError
             print("\(error)")
         }
-        
-        return actions
     }
     
+    /**
+     Creates a new DayAction object from the given dictionary
+     
+     - Parameters:
+        - data: Contains the data for the new DayAction object. The keys in the dictionary have to be the static string keys of the DayActionController class
+     
+     - Returns: A new DayAction object
+    */
     func createDayAction(with data: Dictionary<String, Any>) -> DayAction {
         let action = DayAction(context: context)
         
