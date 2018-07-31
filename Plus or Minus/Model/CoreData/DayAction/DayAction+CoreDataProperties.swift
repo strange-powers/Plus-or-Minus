@@ -2,7 +2,7 @@
 //  DayAction+CoreDataProperties.swift
 //  Plus or Minus
 //
-//  Created by Julian Vöst on 05.07.18.
+//  Created by Julian Vöst on 31.07.18.
 //  Copyright © 2018 Julian Vöst. All rights reserved.
 //
 //
@@ -20,5 +20,6 @@ extension DayAction {
     @NSManaged public var conclusion: Bool
     @NSManaged public var day: NSDate?
     @NSManaged public var desc: String?
+    @NSManaged public var createdAt: NSDate?
 
 }

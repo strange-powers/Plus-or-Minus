@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC3E7EDF210E2F4D005234D6 /* NewActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7EDE210E2F4D005234D6 /* NewActionViewController.swift */; };
 		FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54880C20EC194A007BB6CE /* AppDelegate.swift */; };
 		FC54880F20EC194A007BB6CE /* CurrentWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */; };
 		FC54881220EC194A007BB6CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC54881020EC194A007BB6CE /* Main.storyboard */; };
 		FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC54881320EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld */; };
 		FC54881720EC194B007BB6CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC54881620EC194B007BB6CE /* Assets.xcassets */; };
 		FC54881A20EC194B007BB6CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC54881820EC194B007BB6CE /* LaunchScreen.storyboard */; };
-		FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */; };
-		FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */; };
 		FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883020F00743007BB6CE /* UIView+makeCircle.swift */; };
 		FC54883320F0280E007BB6CE /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883220F0280E007BB6CE /* DayButton.swift */; };
 		FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */; };
+		FCBE40FB2110CCFD0023ADFE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */; };
+		FCBE40FC2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */; };
 		FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9621025964008AF64C /* DetailDayViewController.swift */; };
 		FCDD2E9D210272A1008AF64C /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2E9C210272A1008AF64C /* constants.swift */; };
 		FCDD2EA121027BB2008AF64C /* DayActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDD2EA021027BB2008AF64C /* DayActionController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC3E7EDE210E2F4D005234D6 /* NewActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActionViewController.swift; sourceTree = "<group>"; };
 		FC54880920EC194A007BB6CE /* Plus or Minus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plus or Minus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC54880C20EC194A007BB6CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekViewController.swift; sourceTree = "<group>"; };
@@ -33,11 +35,11 @@
 		FC54881620EC194B007BB6CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC54881920EC194B007BB6CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC54881B20EC194B007BB6CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FC54883020F00743007BB6CE /* UIView+makeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+makeCircle.swift"; sourceTree = "<group>"; };
 		FC54883220F0280E007BB6CE /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekDays+Calendar.swift"; sourceTree = "<group>"; };
+		FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FCDD2E9621025964008AF64C /* DetailDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDayViewController.swift; sourceTree = "<group>"; };
 		FCDD2E9C210272A1008AF64C /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		FCDD2EA021027BB2008AF64C /* DayActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActionController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				FCDD2E9621025964008AF64C /* DetailDayViewController.swift */,
 				FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */,
+				FC3E7EDE210E2F4D005234D6 /* NewActionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -136,8 +139,8 @@
 		FCDD2E9E21027B72008AF64C /* DayAction */ = {
 			isa = PBXGroup;
 			children = (
-				FC54882B20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift */,
-				FC54882C20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift */,
+				FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */,
+				FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */,
 			);
 			path = DayAction;
 			sourceTree = "<group>";
@@ -223,15 +226,16 @@
 			files = (
 				FCDD2EA121027BB2008AF64C /* DayActionController.swift in Sources */,
 				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
+				FC3E7EDF210E2F4D005234D6 /* NewActionViewController.swift in Sources */,
 				FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */,
-				FC54882D20EEB6A2007BB6CE /* DayAction+CoreDataClass.swift in Sources */,
+				FCBE40FB2110CCFD0023ADFE /* DayAction+CoreDataClass.swift in Sources */,
 				FCDD2EA3210528EF008AF64C /* DayActionTableViewCell.swift in Sources */,
 				FCDD2E9D210272A1008AF64C /* constants.swift in Sources */,
 				FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */,
 				FC54880F20EC194A007BB6CE /* CurrentWeekViewController.swift in Sources */,
 				FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */,
-				FC54882E20EEB6A2007BB6CE /* DayAction+CoreDataProperties.swift in Sources */,
 				FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */,
+				FCBE40FC2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift in Sources */,
 				FC54883320F0280E007BB6CE /* DayButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
