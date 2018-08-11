@@ -36,11 +36,12 @@ class DayButton: UIButton {
      - Parameters
         - name: The name of the day the button represents on view level
      */
-    convenience init(withDayName name: String) {
+    convenience init(withDay day: Day) {
         let frame = CGRect(x: 0, y: 0, width: DayButton.WIDTH, height: DayButton.WIDTH)
         self.init(frame: frame)
         
-        setTitle(name, for: .normal)
+        let initials = String(day.dayName.prefix(3))
+        setTitle(initials, for: .normal)
     }
     
     required init?(coder aDecoder: NSCoder) {

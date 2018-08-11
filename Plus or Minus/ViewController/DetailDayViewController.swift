@@ -12,10 +12,10 @@ import CoreData
 class DetailDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     /// day of which actions shall be shown up
-    var day: Date!
+    var day: Day!
     
     /// data for the table view
-    private var actions = [[DayAction]]()
+    private var actions: [[DayAction]]!
     private let actionController = DayActionController()
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +24,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpActions()
+        reloadData()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,6 +50,12 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         return UITableViewCell()
     }
     
+    private func reloadData() {
+        actionController.loadActionsBy(day: day.date, tell: self)
+        day.dayActions = actionController.dayActions
+        actions = [day.goodDayActions, day.badDayActions]
+    }
+    
     /**
      Trigger function when the segment control changes the state
      */
@@ -58,46 +64,10 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     /**
-     Creates and loads the datasource objects with the model
-     */
-    private func setUpActions() {
-        actions.removeAll()
-        loadActions()
-        let dayActions = actionController.dayActions
-        
-        let goodActions = dayActions.compactMap { (dayAction) -> DayAction? in
-            if dayAction.conclusion {
-                return dayAction
-            }
-            
-            return nil
-        }
-        actions.append(goodActions)
-        
-        let badActions = dayActions.compactMap { (dayAction) -> DayAction? in
-            if !dayAction.conclusion {
-                return dayAction
-            }
-            
-            return nil
-        }
-        actions.append(badActions)
-    }
-    
-    /**
-     Loads the DayActions from CoreData
-     */
-    private func loadActions() {
-        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
-        let predicate = NSPredicate(format: "day = %@", day as NSDate)
-        actionController.fetchData(with: [descriptor], and: predicate, tell: self)
-    }
-    
-    /**
      Performs the Segue to a ViewController to add new day actions
     */
     @IBAction func addNewDayAction() {
-        performSegue(withIdentifier: "toNewAction", sender: day)
+        performSegue(withIdentifier: "toNewAction", sender: day.date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,8 +84,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
      Reloads the table if there was a change in the database
     */
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        setUpActions()
-        
+        reloadData()
         tableView.reloadData()
     }
     

@@ -17,14 +17,14 @@ class DayActionController {
     static let DESC_KEY = "desc"
     static let CREATED_AT_KEY = "createdAt"
     
-    private var controller: NSFetchedResultsController<DayAction>!
+    private var controller: NSFetchedResultsController<DayAction>?
     
     var dayActions: [DayAction] {
         get {
-            if let actions = controller.fetchedObjects {
+            if let actions = controller?.fetchedObjects {
                 return actions
             }
-            
+        
             return [DayAction]()
         }
     }
@@ -37,21 +37,51 @@ class DayActionController {
         - predicate: a predicate to limit the DayAction objects
         - delegate: the delegate object for the NSFetchdResultsController
      */
-    func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?, tell delegate: NSFetchedResultsControllerDelegate?) {
+    private func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?, tell delegate: NSFetchedResultsControllerDelegate?) {
         let fetchRequest: NSFetchRequest<DayAction> = DayAction.fetchRequest()
         
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = sortDescriptors
-        
+    
         controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        controller.delegate = delegate
+        controller!.delegate = delegate
         
         do {
-            try controller.performFetch()
+            try controller!.performFetch()
         } catch {
             let error = error as NSError
             print("\(error)")
         }
+    }
+    
+    /**
+     Loads all DayAction objects which day property matches the given date parameter
+     
+     - Parameters:
+        - date: the date object
+        - delegate: the delegate object for the NSFetchdResultsController
+     */
+    func loadActionsBy(day date: Date, tell delegate: NSFetchedResultsControllerDelegate?) {
+        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        let predicate = NSPredicate(format: "day = %@", date as NSDate)
+        fetchData(with: [descriptor], and: predicate, tell: delegate)
+    }
+    
+    /**
+     Loads all DayAction objects which lay in the given week
+     */
+    func loadActionsBy(week dates: [Date], tell delegate: NSFetchedResultsControllerDelegate?) {
+        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        var predicates = [NSPredicate]()
+        
+        for date in dates {
+            let predicate = NSPredicate(format: "day = %@", date as NSDate)
+            predicates.append(predicate)
+        }
+        
+        let predicateCompound = NSCompoundPredicate(type: .or, subpredicates: predicates)
+        
+        fetchData(with: [descriptor], and: predicateCompound, tell: delegate)
     }
     
     /**
