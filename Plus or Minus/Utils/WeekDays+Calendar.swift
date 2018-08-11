@@ -19,12 +19,17 @@ extension Calendar {
     */
     func getWeekDates(from date: Date) -> [Date] {
         let noon = self.date(bySettingHour: 12, minute: 0, second: 0, of: date)!
-        let tomorrow = self.date(byAdding: .day, value: 1, to: noon)
-        let today = startOfDay(for: Date())
-        let dayOfWeek = component(.weekday, from: today)
-        let weekdays = range(of: .weekday, in: .weekOfYear, for: tomorrow!)!
+        var dayOfWeek = component(.weekday, from: noon)
+        
+        if dayOfWeek == 1 {
+            dayOfWeek = 7
+        } else {
+            dayOfWeek = dayOfWeek - 1
+        }
+        
+        let weekdays = range(of: .weekday, in: .weekOfMonth, for: noon)!
         let days = (weekdays.lowerBound ..< weekdays.upperBound)
-            .compactMap { self.date(byAdding: .day, value: $0 - dayOfWeek, to: tomorrow!) }
+            .compactMap { self.date(byAdding: .day, value: $0 - dayOfWeek, to: noon) }
         
         return days
     }
