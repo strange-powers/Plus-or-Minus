@@ -17,11 +17,12 @@ class DayActionController {
     static let DESC_KEY = "desc"
     static let CREATED_AT_KEY = "createdAt"
     
-    private var controller: NSFetchedResultsController<DayAction>?
+    private let _fetchRequest: NSFetchRequest<DayAction> = DayAction.fetchRequest()
+    private var _controller: NSFetchedResultsController<DayAction>!
     
     var dayActions: [DayAction] {
         get {
-            if let actions = controller?.fetchedObjects {
+            if let actions = _controller.fetchedObjects {
                 return actions
             }
         
@@ -29,25 +30,36 @@ class DayActionController {
         }
     }
     
+    weak var coreDataDelegate: NSFetchedResultsControllerDelegate? {
+        get {
+            return _controller.delegate
+        }
+        
+        set {
+            _controller.delegate = newValue
+        }
+    }
+    
+    init() {
+        _fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+        
+        _controller = NSFetchedResultsController(fetchRequest: _fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
     /**
      Fetches all found DayAction objects which have been saved into CoreData which match the NSpredicate. It can be sorted by the given sort descriptors
      
      - Parameters:
-        - sortDescriptors: sort descriptors which sort the fetched data
+        - sortDescriptors: sort descriptors which sort the fetched data (default object is: [NSSortDescriptor(key: "createdAt", ascending: false)])
         - predicate: a predicate to limit the DayAction objects
         - delegate: the delegate object for the NSFetchdResultsController
      */
-    private func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?, tell delegate: NSFetchedResultsControllerDelegate?) {
-        let fetchRequest: NSFetchRequest<DayAction> = DayAction.fetchRequest()
-        
-        fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = sortDescriptors
-    
-        controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        controller!.delegate = delegate
+    private func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?) {
+        _fetchRequest.predicate = predicate
+        _fetchRequest.sortDescriptors = sortDescriptors
         
         do {
-            try controller!.performFetch()
+            try _controller.performFetch()
         } catch {
             let error = error as NSError
             print("\(error)")
@@ -61,16 +73,16 @@ class DayActionController {
         - date: the date object
         - delegate: the delegate object for the NSFetchdResultsController
      */
-    func loadActionsBy(day date: Date, tell delegate: NSFetchedResultsControllerDelegate?) {
+    func loadActionsBy(day date: Date) {
         let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         let predicate = NSPredicate(format: "day = %@", date as NSDate)
-        fetchData(with: [descriptor], and: predicate, tell: delegate)
+        fetchData(with: [descriptor], and: predicate)
     }
     
     /**
      Loads all DayAction objects which lay in the given week
      */
-    func loadActionsBy(week dates: [Date], tell delegate: NSFetchedResultsControllerDelegate?) {
+    func loadActionsBy(week dates: [Date]) {
         let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         var predicates = [NSPredicate]()
         
@@ -81,7 +93,7 @@ class DayActionController {
         
         let predicateCompound = NSCompoundPredicate(type: .or, subpredicates: predicates)
         
-        fetchData(with: [descriptor], and: predicateCompound, tell: delegate)
+        fetchData(with: [descriptor], and: predicateCompound)
     }
     
     /**
@@ -92,7 +104,7 @@ class DayActionController {
      
      - Returns: A new DayAction object
     */
-    func createDayAction(with data: Dictionary<String, Any>) -> DayAction {
+    static func createDayAction(with data: Dictionary<String, Any>) -> DayAction {
         let action = DayAction(context: context)
         
         if let conclusion = data[DayActionController.CONCLUSION_KEY] as? Bool {
@@ -114,7 +126,7 @@ class DayActionController {
         return action
     }
     
-    func saveDayActions() {
+    static func saveDayActions() {
         application.saveContext()
     }
 }

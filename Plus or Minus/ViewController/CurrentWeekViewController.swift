@@ -12,7 +12,6 @@ class CurrentWeekViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let actionController = DayActionController()
     var week = [Day]()
     
     override func viewDidLoad() {
@@ -20,14 +19,7 @@ class CurrentWeekViewController: UIViewController {
         
         let weekDates = Calendar.current.getWeekDates(from: Date())
         week = weekDates.map({ Day(date: $0) })
-        
-        actionController.loadActionsBy(week: weekDates, tell: nil)
-        
-        for action in actionController.dayActions {
-            if let day = week.first(where: { $0.date.compare(action.day! as Date) == .orderedSame }) {
-                day.dayActions.append(action)
-            }
-        }
+        week.forEach({ $0.loadDayActions() })
         
         setUpScrollView()
     }

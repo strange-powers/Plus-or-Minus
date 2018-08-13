@@ -38,10 +38,8 @@ class NewActionViewController: UIViewController {
             DayActionController.CREATED_AT_KEY: Date()
         ]
         
-        let controller = DayActionController()
-        
-        controller.createDayAction(with: data)
-        controller.saveDayActions()
+        DayActionController.createDayAction(with: data)
+        DayActionController.saveDayActions()
     }
     
 //    private func asignExactTimeTo(date day: Date) -> Date {

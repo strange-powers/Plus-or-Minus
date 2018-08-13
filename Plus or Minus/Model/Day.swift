@@ -7,24 +7,32 @@
 //
 
 import Foundation
+import CoreData
 
 class Day {
-    private var _dayActions = [DayAction]()
     private var _date: Date!
+    private let _actionController = DayActionController()
     
-    var dayActions: [DayAction] {
+    weak var dayActionCoreDateDelegate: NSFetchedResultsControllerDelegate? {
         get {
-            return _dayActions
+            return _actionController.coreDataDelegate
         }
         
         set {
-            _dayActions = newValue
+            _actionController.coreDataDelegate = newValue
+        }
+    }
+    
+    
+    var dayActions: [DayAction] {
+        get {
+            return _actionController.dayActions
         }
     }
     
     var goodDayActions: [DayAction] {
         get {
-            let actions = _dayActions.compactMap { (action) -> DayAction? in
+            let actions = dayActions.compactMap { (action) -> DayAction? in
                 if action.conclusion {
                     return action
                 }
@@ -39,7 +47,7 @@ class Day {
     
     var badDayActions: [DayAction] {
         get {
-            let actions = _dayActions.compactMap { (action) -> DayAction? in
+            let actions = dayActions.compactMap { (action) -> DayAction? in
                 if !action.conclusion {
                     return action
                 }
@@ -67,5 +75,10 @@ class Day {
     
     init(date: Date) {
         _date = date
+    }
+    
+    public func loadDayActions() {
+        _actionController.coreDataDelegate = dayActionCoreDateDelegate
+        _actionController.loadActionsBy(day: _date)
     }
 }

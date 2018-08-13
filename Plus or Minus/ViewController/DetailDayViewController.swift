@@ -24,6 +24,8 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        day.dayActionCoreDateDelegate = self
+        
         reloadData()
         
         tableView.delegate = self
@@ -51,8 +53,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func reloadData() {
-        actionController.loadActionsBy(day: day.date, tell: self)
-        day.dayActions = actionController.dayActions
+        day.loadDayActions()
         actions = [day.goodDayActions, day.badDayActions]
     }
     

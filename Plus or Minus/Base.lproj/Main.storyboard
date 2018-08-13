@@ -26,6 +26,69 @@
             </objects>
             <point key="canvasLocation" x="-1369" y="101"/>
         </scene>
+        <!--Weeks View Controller-->
+        <scene sceneID="cxN-k0-Y4O">
+            <objects>
+                <viewController id="sfz-qK-goY" customClass="WeeksViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GQd-eb-NWY"/>
+                        <viewControllerLayoutGuide type="bottom" id="EkI-U5-i8K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JnZ-MK-AXQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-CS-sQx">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2CM-XH-g9v">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="lol" id="QVn-VG-6bu">
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="151"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="151"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yalla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc0-y4-vvH">
+                                                    <rect key="frame" x="58" y="65" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.1259149909" green="0.81746035809999995" blue="0.50288313630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Rc0-y4-vvH" firstAttribute="centerY" secondItem="QVn-VG-6bu" secondAttribute="centerY" id="uly-xL-WKl"/>
+                                            <constraint firstItem="Rc0-y4-vvH" firstAttribute="centerX" secondItem="QVn-VG-6bu" secondAttribute="centerX" id="vSM-ms-KCP"/>
+                                        </constraints>
+                                        <size key="customSize" width="151" height="151"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wHH-CS-sQx" firstAttribute="trailing" secondItem="JnZ-MK-AXQ" secondAttribute="trailingMargin" id="9w3-wV-SOy"/>
+                            <constraint firstItem="EkI-U5-i8K" firstAttribute="top" secondItem="wHH-CS-sQx" secondAttribute="bottom" id="Q60-sw-4Ab"/>
+                            <constraint firstItem="wHH-CS-sQx" firstAttribute="top" secondItem="GQd-eb-NWY" secondAttribute="bottom" id="gqR-Jv-Jb3"/>
+                            <constraint firstItem="wHH-CS-sQx" firstAttribute="leading" secondItem="JnZ-MK-AXQ" secondAttribute="leadingMargin" id="wjb-D0-2sE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collection" destination="wHH-CS-sQx" id="ue2-QI-Nkt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PiK-9h-C9k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-128.80000000000001" y="-757.87106446776613"/>
+        </scene>
         <!--Current Week View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -52,7 +115,13 @@
                             <constraint firstItem="goR-V7-Khw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4DJ-Eh-zjW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ce9-6c-3Hf"/>
+                    <navigationItem key="navigationItem" id="ce9-6c-3Hf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="EOD-fC-sWV">
+                            <connections>
+                                <segue destination="sfz-qK-goY" kind="show" id="jWf-n7-Hky"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="goR-V7-Khw" id="QFG-JS-dFK"/>
                         <segue destination="aeH-EM-P74" kind="show" identifier="toDayDetail" id="Xct-yv-eYa"/>
