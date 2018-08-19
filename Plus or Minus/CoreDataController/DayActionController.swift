@@ -125,8 +125,4 @@ class DayActionController {
         
         return action
     }
-    
-    static func saveDayActions() {
-        application.saveContext()
-    }
 }

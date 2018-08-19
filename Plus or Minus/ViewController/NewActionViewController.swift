@@ -39,17 +39,7 @@ class NewActionViewController: UIViewController {
         ]
         
         DayActionController.createDayAction(with: data)
-        DayActionController.saveDayActions()
+        application.saveContext()
     }
     
-//    private func asignExactTimeTo(date day: Date) -> Date {
-//        let calendar = Calendar.current
-//        let hour = calendar.component(.hour, from: Date())
-//        let minute = calendar.component(.minute, from: Date())
-//        let second = calendar.component(.second, from: Date())
-//        
-//        let date = Calendar.current.date(bySettingHour: hour, minute: minute, second: second, of: day)!
-//        
-//        return date
-//    }
 }

@@ -27,7 +27,7 @@ class DayButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        styleButton()
+        setStyle()
     }
     
     /**
@@ -42,6 +42,7 @@ class DayButton: UIButton {
         
         let initials = String(day.dayName.prefix(3))
         setTitle(initials, for: .normal)
+        backgroundColor = setConclusionStyle(for: day)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,12 +52,28 @@ class DayButton: UIButton {
     /**
      Styles the UIButton
     */
-    private func styleButton() {
+    private func setStyle() {
         UIView.makeCircleFrom(self)
-        backgroundColor = DayButton.BACKGROUND_COLOR
         tintColor = DayButton.TINT_COLOR
         layer.borderWidth = 0
         titleLabel?.font = UIFont.boldSystemFont(ofSize: DayButton.FONT_SIZE)
+    }
+    
+    /**
+     Sets the colour of the button depending on the days day actions
+     */
+    private func setConclusionStyle(for day: Day) -> UIColor {
+        if day.badDayActions.count == 0 && day.goodDayActions.count == 0 {
+            return UIColor.black
+        }
+        
+        let fullCount = CGFloat(day.dayActions.count)
+        let goodCount = CGFloat(day.goodDayActions.count)
+        let badCount = CGFloat(day.badDayActions.count)
+        let goodScore = goodCount / fullCount
+        let badScore = badCount / fullCount
+        
+        return UIColor(red: badScore, green: goodScore, blue: 0, alpha: 1)
     }
 
 }
