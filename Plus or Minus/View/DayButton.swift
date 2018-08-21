@@ -12,9 +12,6 @@ class DayButton: UIButton {
     /// The buttons font color
     static let TINT_COLOR = UIColor.white
     
-    /// The buttons background color
-    static let BACKGROUND_COLOR = UIColor.green
-    
     /// The buttons font size
     static let FONT_SIZE: CGFloat = 32.0
     
@@ -63,17 +60,18 @@ class DayButton: UIButton {
      Sets the colour of the button depending on the days day actions
      */
     private func setConclusionStyle(for day: Day) -> UIColor {
-        if day.badDayActions.count == 0 && day.goodDayActions.count == 0 {
-            return UIColor.black
-        }
-        
         let fullCount = CGFloat(day.dayActions.count)
         let goodCount = CGFloat(day.goodDayActions.count)
         let badCount = CGFloat(day.badDayActions.count)
-        let goodScore = goodCount / fullCount
-        let badScore = badCount / fullCount
+        let goodScore = (goodCount == 0) ? 0 : goodCount / fullCount
+        let badScore = (badCount == 0) ? 0 : badCount / fullCount
         
-        return UIColor(red: badScore, green: goodScore, blue: 0, alpha: 1)
+        var alphaVal: CGFloat = 1
+        if goodScore == 0 && badScore == 0 {
+            alphaVal = 0.5
+        }
+        
+        return UIColor(red: badScore, green: goodScore, blue: 0, alpha: alphaVal)
     }
 
 }
