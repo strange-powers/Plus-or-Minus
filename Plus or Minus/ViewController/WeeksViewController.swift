@@ -8,16 +8,16 @@
 
 import UIKit
 
-class WeeksViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var weeks = [[Day]]()
-    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collection.dataSource = self
-        collection.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         let weekDates = Calendar.current.getWeekDates(from: Date())
         let curWeek = weekDates.map({ Day(date: $0) })
@@ -39,19 +39,28 @@ class WeeksViewController: UIViewController, UICollectionViewDelegate, UICollect
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "lol", for: indexPath)
-        
-        UIView.makeCircleFrom(collectionCell)
-        
-        return collectionCell
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weeks.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "weekCell") as? WeekTableViewCell {
+            cell.prepareCellWithData(from: weeks[indexPath.row])
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let currentWeekVC = navigationController?.viewControllers[0] as? CurrentWeekViewController {
             currentWeekVC.week = weeks[indexPath.row]
         }
