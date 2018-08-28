@@ -12,10 +12,10 @@ class WeekTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
     
-    func prepareCellWithData(from week: [Day]) {
-        if week.count == 7 {
-            let firstDate = formatDate(week.first!.date)
-            let lastDate = formatDate(week.last!.date)
+    func prepareCellWithData(from week: Week) {
+        if week.days.count == 7 {
+            let firstDate = formatDate(week.days.first!.date)
+            let lastDate = formatDate(week.days.last!.date)
             
             label.text = "\(firstDate) - \(lastDate)"
         } else {

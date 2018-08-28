@@ -12,14 +12,14 @@ class CurrentWeekViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var week = [Day]()
+    var week: Week!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let weekDates = Calendar.current.getWeekDates(from: Date())
-        week = weekDates.map({ Day(date: $0) })
-        week.forEach({ $0.loadDayActions() })
+        week = Week(days: weekDates)
+        week.days.forEach({ $0.loadDayActions() })
         
         setUpScrollView()
     }
@@ -46,7 +46,7 @@ class CurrentWeekViewController: UIViewController {
         let scrollWidth = scrollView.frame.size.width
         var itemCount: CGFloat = 0
         
-        for day in week {
+        for day in week.days {
             let newX = scrollWidth / 2 + scrollWidth * CGFloat(itemCount)
             
             let dayBtn = createDayButton(from: day)
@@ -63,7 +63,7 @@ class CurrentWeekViewController: UIViewController {
     
     @IBAction func dateBtnClicked() {
         let dayIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
-        performSegue(withIdentifier: "toDayDetail", sender: week[dayIndex])
+        performSegue(withIdentifier: "toDayDetail", sender: week.days[dayIndex])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -10,6 +10,7 @@
 		FC0B2C9F211CDFE500BB8801 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B2C9E211CDFE500BB8801 /* Day.swift */; };
 		FC3E7EDF210E2F4D005234D6 /* NewActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7EDE210E2F4D005234D6 /* NewActionViewController.swift */; };
 		FC3F3AFA212CBBDB001F3B63 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3AF9212CBBDB001F3B63 /* WeekTableViewCell.swift */; };
+		FC3F3AFE213088E8001F3B63 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F3AFD213088E8001F3B63 /* Week.swift */; };
 		FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54880C20EC194A007BB6CE /* AppDelegate.swift */; };
 		FC54880F20EC194A007BB6CE /* CurrentWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */; };
 		FC54881220EC194A007BB6CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC54881020EC194A007BB6CE /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 		FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883020F00743007BB6CE /* UIView+makeCircle.swift */; };
 		FC54883320F0280E007BB6CE /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54883220F0280E007BB6CE /* DayButton.swift */; };
 		FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */; };
+		FCA79E012135DD8B00AB2D19 /* Rateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA79E002135DD8B00AB2D19 /* Rateable.swift */; };
 		FCBE40FB2110CCFD0023ADFE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */; };
 		FCBE40FC2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */; };
 		FCBE40FE2114C35C0023ADFE /* WeeksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40FD2114C35C0023ADFE /* WeeksViewController.swift */; };
@@ -32,6 +34,7 @@
 		FC0B2C9E211CDFE500BB8801 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		FC3E7EDE210E2F4D005234D6 /* NewActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActionViewController.swift; sourceTree = "<group>"; };
 		FC3F3AF9212CBBDB001F3B63 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
+		FC3F3AFD213088E8001F3B63 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		FC54880920EC194A007BB6CE /* Plus or Minus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plus or Minus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC54880C20EC194A007BB6CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC54880E20EC194A007BB6CE /* CurrentWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		FC54883020F00743007BB6CE /* UIView+makeCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+makeCircle.swift"; sourceTree = "<group>"; };
 		FC54883220F0280E007BB6CE /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekDays+Calendar.swift"; sourceTree = "<group>"; };
+		FCA79E002135DD8B00AB2D19 /* Rateable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rateable.swift; sourceTree = "<group>"; };
 		FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FCBE40FD2114C35C0023ADFE /* WeeksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksViewController.swift; sourceTree = "<group>"; };
@@ -109,8 +113,10 @@
 		FC54882920EEB5DE007BB6CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCA79DFF2135DC8600AB2D19 /* Protocols */,
 				FC54882A20EEB5E5007BB6CE /* CoreData */,
 				FC0B2C9E211CDFE500BB8801 /* Day.swift */,
+				FC3F3AFD213088E8001F3B63 /* Week.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +146,14 @@
 				FCDD2E9C210272A1008AF64C /* constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FCA79DFF2135DC8600AB2D19 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FCA79E002135DD8B00AB2D19 /* Rateable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FCDD2E932102555A008AF64C /* ViewController */ = {
@@ -242,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCDD2EA121027BB2008AF64C /* DayActionController.swift in Sources */,
+				FCA79E012135DD8B00AB2D19 /* Rateable.swift in Sources */,
 				FC3F3AFA212CBBDB001F3B63 /* WeekTableViewCell.swift in Sources */,
 				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
 				FCBE40FE2114C35C0023ADFE /* WeeksViewController.swift in Sources */,
@@ -254,6 +269,7 @@
 				FC54881520EC194A007BB6CE /* Plus_or_Minus.xcdatamodeld in Sources */,
 				FC54880F20EC194A007BB6CE /* CurrentWeekViewController.swift in Sources */,
 				FC5FF26C20F9630D0087646D /* WeekDays+Calendar.swift in Sources */,
+				FC3F3AFE213088E8001F3B63 /* Week.swift in Sources */,
 				FC54880D20EC194A007BB6CE /* AppDelegate.swift in Sources */,
 				FCBE40FC2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift in Sources */,
 				FC54883320F0280E007BB6CE /* DayButton.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var weeks = [[Day]]()
+    var weeks = [Week]()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,14 +20,14 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         
         let weekDates = Calendar.current.getWeekDates(from: Date())
-        let curWeek = weekDates.map({ Day(date: $0) })
+        let curWeek = Week(days: weekDates)
         weeks.append(curWeek)
         
         for index in 0..<10 {
-            if let firstWeekDay = weeks[index].first?.date {
+            if let firstWeekDay = weeks[index].days.first?.date {
                 if let lastDayOfLastWeek = Calendar.current.date(byAdding: .day, value: -1, to: firstWeekDay) {
                     let lastWeek = Calendar.current.getWeekDates(from: lastDayOfLastWeek)
-                    let week = lastWeek.map({ Day(date: $0) })
+                    let week = Week(days: lastWeek)
                     weeks.append(week)
                 } else {
                     // TODO: Do some error handling ... but what error handling ?
