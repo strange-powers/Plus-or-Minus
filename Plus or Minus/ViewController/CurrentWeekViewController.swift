@@ -50,6 +50,7 @@ class CurrentWeekViewController: UIViewController {
             let newX = scrollWidth / 2 + scrollWidth * CGFloat(itemCount)
             
             let dayBtn = createDayButton(from: day)
+            dayBtn.setBackgroundColor(by: day)
             dayBtn.frame.origin.x = newX - (dayBtn.frame.width / 2)
             dayBtn.frame.origin.y = (scrollView.frame.size.height / 2) - (dayBtn.frame.height / 2)
             scrollView.addSubview(dayBtn)

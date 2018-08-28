@@ -23,6 +23,20 @@ class WeekTableViewCell: UITableViewCell {
         }
     }
     
+    public func setBackgroundColor(by rate: Rateable) {
+        let goodRate = CGFloat(rate.goodProportion)
+        let badRate = CGFloat(rate.badProportion)
+        
+        var alphaVal: CGFloat = 1
+        if goodRate == 0 && badRate == 0 {
+            alphaVal = 0.5
+        }
+        
+        let color = UIColor(red: badRate, green: goodRate, blue: 0, alpha: alphaVal)
+        
+        backgroundColor = color
+    }
+    
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         let dateTemplate = "yMMMMd"

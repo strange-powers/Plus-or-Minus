@@ -39,7 +39,6 @@ class DayButton: UIButton {
         
         let initials = String(day.dayName.prefix(3))
         setTitle(initials, for: .normal)
-        backgroundColor = setConclusionStyle(for: day)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,24 +53,6 @@ class DayButton: UIButton {
         tintColor = DayButton.TINT_COLOR
         layer.borderWidth = 0
         titleLabel?.font = UIFont.boldSystemFont(ofSize: DayButton.FONT_SIZE)
-    }
-    
-    /**
-     Sets the colour of the button depending on the days day actions
-     */
-    private func setConclusionStyle(for day: Day) -> UIColor {
-        let fullCount = CGFloat(day.dayActions.count)
-        let goodCount = CGFloat(day.goodDayActions.count)
-        let badCount = CGFloat(day.badDayActions.count)
-        let goodScore = (goodCount == 0) ? 0 : goodCount / fullCount
-        let badScore = (badCount == 0) ? 0 : badCount / fullCount
-        
-        var alphaVal: CGFloat = 1
-        if goodScore == 0 && badScore == 0 {
-            alphaVal = 0.5
-        }
-        
-        return UIColor(red: badScore, green: goodScore, blue: 0, alpha: alphaVal)
     }
 
 }
