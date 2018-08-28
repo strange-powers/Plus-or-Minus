@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Week {
+class Week: Rateable {
+    
     private var _days: [Day]!
     
     var days: [Day] {
@@ -33,6 +34,32 @@ class Week {
         }
         
         return actions
+    }
+    
+    var goodProportion: Float {
+        let goodActionsCount = Float(goodActions.count)
+        
+        if goodActionsCount == 0 {
+            return 0
+        }
+        
+        let allActionsCount = goodActionsCount + Float(badActions.count)
+        let proportion = goodActionsCount / allActionsCount
+        
+        return proportion
+    }
+    
+    var badProportion: Float {
+        let badActionsCount = Float(goodActions.count)
+        
+        if badActionsCount == 0 {
+            return 0
+        }
+        
+        let allActionsCount = badActionsCount + Float(goodActions.count)
+        let proportion = badActionsCount / allActionsCount
+        
+        return proportion
     }
     
     init(days: [Day]) {

@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreData
+import CoreGraphics
 
-class Day {
+class Day: Rateable {
     private var _date: Date!
     private let _actionController = DayActionController()
     
@@ -71,6 +72,32 @@ class Day {
         
             return formatter.string(from: date)
         }
+    }
+    
+    var goodProportion: Float {
+        let allActionsCount = Float(dayActions.count)
+        let goodDayActionsCount = Float(goodDayActions.count)
+        
+        if goodDayActionsCount == 0 {
+            return 0
+        }
+        
+        let proportion = goodDayActionsCount / allActionsCount
+        
+        return proportion
+    }
+    
+    var badProportion: Float {
+        let allActionsCount = Float(dayActions.count)
+        let badDayActionsCount = Float(badDayActions.count)
+        
+        if badDayActionsCount == 0 {
+            return 0
+        }
+        
+        let proportion = badDayActionsCount / allActionsCount
+        
+        return proportion
     }
     
     init(date: Date) {

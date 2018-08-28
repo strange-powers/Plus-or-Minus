@@ -21,6 +21,7 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let weekDates = Calendar.current.getWeekDates(from: Date())
         let curWeek = Week(days: weekDates)
+        curWeek.days.forEach({ $0.loadDayActions() })
         weeks.append(curWeek)
         
         for index in 0..<10 {
@@ -28,6 +29,7 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let lastDayOfLastWeek = Calendar.current.date(byAdding: .day, value: -1, to: firstWeekDay) {
                     let lastWeek = Calendar.current.getWeekDates(from: lastDayOfLastWeek)
                     let week = Week(days: lastWeek)
+                    week.days.forEach({ $0.loadDayActions() })
                     weeks.append(week)
                 } else {
                     // TODO: Do some error handling ... but what error handling ?
@@ -49,7 +51,11 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "weekCell") as? WeekTableViewCell {
-            cell.prepareCellWithData(from: weeks[indexPath.row])
+            let week = weeks[indexPath.row]
+            
+            cell.prepareCellWithData(from: week)
+            cell.setBackgroundColor(by: week)
+            
             return cell
         }
         
