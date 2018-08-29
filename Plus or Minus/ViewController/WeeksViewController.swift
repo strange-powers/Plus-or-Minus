@@ -24,21 +24,8 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         curWeek.days.forEach({ $0.loadDayActions() })
         weeks.append(curWeek)
         
-        for index in 0..<10 {
-            if let firstWeekDay = weeks[index].days.first?.date {
-                if let lastDayOfLastWeek = Calendar.current.date(byAdding: .day, value: -1, to: firstWeekDay) {
-                    let lastWeek = Calendar.current.getWeekDates(from: lastDayOfLastWeek)
-                    let week = Week(days: lastWeek)
-                    week.days.forEach({ $0.loadDayActions() })
-                    weeks.append(week)
-                } else {
-                    // TODO: Do some error handling ... but what error handling ?
-                }
-            } else {
-                // TODO: Do some error handling ... but what error handling ?
-            }
-        }
-        
+        let lastWeeks = getLastWeeksFrom(start: curWeek, counts: 10)
+        weeks.append(contentsOf: lastWeeks)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,6 +43,12 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.prepareCellWithData(from: week)
             cell.setBackgroundColor(by: week)
             
+            if week.isEqual(weeks.last!) {
+                let nextLastWeeks = getLastWeeksFrom(start: week, counts: 10)
+                weeks.append(contentsOf: nextLastWeeks)
+                tableView.reloadData()
+            }
+            
             return cell
         }
         
@@ -72,6 +65,29 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    private func getLastWeeksFrom(start week: Week, counts count: Int) -> [Week] {
+        var lastWeeks = [week]
+        
+        for index in 0..<count {
+            if let firstWeekDay = lastWeeks[index].days.first?.date {
+                if let lastDayOfLastWeek = Calendar.current.date(byAdding: .day, value: -1, to: firstWeekDay) {
+                    let lastWeek = Calendar.current.getWeekDates(from: lastDayOfLastWeek)
+                    let week = Week(days: lastWeek)
+                    week.days.forEach({ $0.loadDayActions() })
+                    lastWeeks.append(week)
+                } else {
+                    // TODO: Do some error handling ... but what error handling ?
+                }
+            } else {
+                // TODO: Do some error handling ... but what error handling ?
+            }
+        }
+        
+        lastWeeks.remove(at: 0)
+        
+        return lastWeeks
     }
 
 }

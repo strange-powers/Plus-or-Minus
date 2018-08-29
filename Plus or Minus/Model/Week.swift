@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Week: Rateable {
+class Week: NSObject, Rateable {
     
     private var _days: [Day]!
     
