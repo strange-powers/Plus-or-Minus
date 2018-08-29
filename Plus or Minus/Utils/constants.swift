@@ -11,3 +11,5 @@ import UIKit
 
 let application = UIApplication.shared.delegate as! AppDelegate
 let context = application.persistentContainer.viewContext
+
+let weekTemplateStr = "yMMMMd"

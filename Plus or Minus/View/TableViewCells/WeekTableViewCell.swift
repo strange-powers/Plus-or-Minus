@@ -12,39 +12,22 @@ class WeekTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        layer.borderWidth = 4
+        layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+    }
+    
     func prepareCellWithData(from week: Week) {
         if week.days.count == 7 {
-            let firstDate = formatDate(week.days.first!.date)
-            let lastDate = formatDate(week.days.last!.date)
+            let firstDate = DateFormatter.formatDate(week.days.first!.date, with: weekTemplateStr)
+            let lastDate = DateFormatter.formatDate(week.days.last!.date, with: weekTemplateStr)
             
             label.text = "\(firstDate) - \(lastDate)"
         } else {
             label.text = "Something went wrong..."
         }
-    }
-    
-    public func setBackgroundColor(by rate: Rateable) {
-        let goodRate = CGFloat(rate.goodProportion)
-        let badRate = CGFloat(rate.badProportion)
-        
-        var alphaVal: CGFloat = 1
-        if goodRate == 0 && badRate == 0 {
-            alphaVal = 0.5
-        }
-        
-        let color = UIColor(red: badRate, green: goodRate, blue: 0, alpha: alphaVal)
-        
-        backgroundColor = color
-    }
-    
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        let dateTemplate = "yMMMMd"
-        let format = DateFormatter.dateFormat(fromTemplate: dateTemplate, options: 0, locale: .current)!
-        formatter.dateFormat = format
-        let formatedDate = formatter.string(from: date)
-        
-        return formatedDate
     }
 
 }

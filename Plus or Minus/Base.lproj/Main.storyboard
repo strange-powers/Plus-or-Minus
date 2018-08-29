@@ -98,18 +98,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goR-V7-Khw">
-                                <rect key="frame" x="0.0" y="256" width="375" height="154"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.08.1997 - 24.08.1997" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-mF-2GU">
+                                <rect key="frame" x="95" y="114" width="185" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="Yp2-Fm-8JW"/>
-                                    <constraint firstAttribute="height" constant="154" id="q3G-kJ-kB6"/>
+                                    <constraint firstAttribute="height" constant="21" id="44C-GI-xjr"/>
                                 </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vnV-Ie-55j">
+                                <rect key="frame" x="0.0" y="256" width="375" height="154"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goR-V7-Khw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="Yp2-Fm-8JW"/>
+                                            <constraint firstAttribute="height" constant="154" id="q3G-kJ-kB6"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="goR-V7-Khw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="09d-PA-DZE"/>
-                            <constraint firstItem="goR-V7-Khw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4DJ-Eh-zjW"/>
+                            <constraint firstItem="vnV-Ie-55j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KOa-eB-go0"/>
+                            <constraint firstItem="Wbd-mF-2GU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j9s-EE-PMQ"/>
+                            <constraint firstItem="Wbd-mF-2GU" firstAttribute="top" secondItem="TYB-8N-ICM" secondAttribute="bottom" constant="50" id="nou-yS-W3f"/>
+                            <constraint firstItem="vnV-Ie-55j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rTi-X6-15B"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ce9-6c-3Hf">
@@ -121,12 +137,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="goR-V7-Khw" id="QFG-JS-dFK"/>
+                        <outlet property="weekLabel" destination="Wbd-mF-2GU" id="9XI-Ot-nAb"/>
                         <segue destination="aeH-EM-P74" kind="show" identifier="toDayDetail" id="Xct-yv-eYa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-127" y="100"/>
+            <point key="canvasLocation" x="-127.2" y="99.400299850074973"/>
         </scene>
         <!--Title-->
         <scene sceneID="jE5-E6-zJu">

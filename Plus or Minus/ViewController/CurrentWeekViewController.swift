@@ -11,6 +11,7 @@ import UIKit
 class CurrentWeekViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var weekLabel: UILabel!
     
     var week: Week!
     
@@ -22,6 +23,15 @@ class CurrentWeekViewController: UIViewController {
         week.days.forEach({ $0.loadDayActions() })
         
         setUpScrollView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let firstDate = DateFormatter.formatDate(week.days.first!.date, with: weekTemplateStr)
+        let lastDate = DateFormatter.formatDate(week.days.last!.date, with: weekTemplateStr)
+        
+        weekLabel.text = "\(firstDate) - \(lastDate)"
     }
     
     /**
