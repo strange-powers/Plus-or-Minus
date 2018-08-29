@@ -23,6 +23,7 @@
 		FCA79E012135DD8B00AB2D19 /* Rateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA79E002135DD8B00AB2D19 /* Rateable.swift */; };
 		FCA79E042135EA9E00AB2D19 /* BackgroundColorRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA79E032135EA9E00AB2D19 /* BackgroundColorRates.swift */; };
 		FCA79E0621373A6600AB2D19 /* FormatDate+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA79E0521373A6600AB2D19 /* FormatDate+DateFormatter.swift */; };
+		FCA79E08213741FC00AB2D19 /* HideKeyboardWenTappedAround+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA79E07213741FC00AB2D19 /* HideKeyboardWenTappedAround+UIViewController.swift */; };
 		FCBE40FB2110CCFD0023ADFE /* DayAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */; };
 		FCBE40FC2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */; };
 		FCBE40FE2114C35C0023ADFE /* WeeksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE40FD2114C35C0023ADFE /* WeeksViewController.swift */; };
@@ -51,6 +52,7 @@
 		FCA79E002135DD8B00AB2D19 /* Rateable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rateable.swift; sourceTree = "<group>"; };
 		FCA79E032135EA9E00AB2D19 /* BackgroundColorRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorRates.swift; sourceTree = "<group>"; };
 		FCA79E0521373A6600AB2D19 /* FormatDate+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatDate+DateFormatter.swift"; sourceTree = "<group>"; };
+		FCA79E07213741FC00AB2D19 /* HideKeyboardWenTappedAround+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboardWenTappedAround+UIViewController.swift"; sourceTree = "<group>"; };
 		FCBE40F92110CCFD0023ADFE /* DayAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FCBE40FA2110CCFD0023ADFE /* DayAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FCBE40FD2114C35C0023ADFE /* WeeksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				FC5FF26B20F9630D0087646D /* WeekDays+Calendar.swift */,
 				FCDD2E9C210272A1008AF64C /* constants.swift */,
 				FCA79E0521373A6600AB2D19 /* FormatDate+DateFormatter.swift */,
+				FCA79E07213741FC00AB2D19 /* HideKeyboardWenTappedAround+UIViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				FCA79E012135DD8B00AB2D19 /* Rateable.swift in Sources */,
 				FC3F3AFA212CBBDB001F3B63 /* WeekTableViewCell.swift in Sources */,
 				FC54883120F00743007BB6CE /* UIView+makeCircle.swift in Sources */,
+				FCA79E08213741FC00AB2D19 /* HideKeyboardWenTappedAround+UIViewController.swift in Sources */,
 				FCBE40FE2114C35C0023ADFE /* WeeksViewController.swift in Sources */,
 				FC3E7EDF210E2F4D005234D6 /* NewActionViewController.swift in Sources */,
 				FCDD2E9721025964008AF64C /* DetailDayViewController.swift in Sources */,

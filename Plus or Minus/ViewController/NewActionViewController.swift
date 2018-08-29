@@ -12,6 +12,12 @@ class NewActionViewController: UIViewController {
     
     var day: Date!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        hideKeyboardWhenTappedAround()
+    }
+    
     @IBOutlet weak var descTxtField: UITextField!
     
     @IBAction func addNewAction(_ sender: Any?) {
