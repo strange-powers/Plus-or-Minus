@@ -25,7 +25,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         day.dayActionCoreDateDelegate = self
-        
+
         reloadData()
         
         tableView.delegate = self
@@ -51,7 +51,9 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
         
         return UITableViewCell()
     }
-    
+    /**
+     Reloads the the data
+     */
     private func reloadData() {
         day.loadDayActions()
         actions = [day.goodDayActions, day.badDayActions]
@@ -87,6 +89,7 @@ class DetailDayViewController: UIViewController, UITableViewDelegate, UITableVie
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         reloadData()
         tableView.reloadData()
+        NotificationCenter.default.post(name: .updateDayActionName, object: nil)
     }
     
 }

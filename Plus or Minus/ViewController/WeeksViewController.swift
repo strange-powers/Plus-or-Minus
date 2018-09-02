@@ -26,6 +26,16 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let lastWeeks = getLastWeeksFrom(start: curWeek, counts: 10)
         weeks.append(contentsOf: lastWeeks)
+        
+        NotificationCenter.default.addObserver(forName: .updateDayActionName, object: nil, queue: nil) { (notification) in
+            for index in 0..<self.weeks.count {
+                let week = self.weeks[index]
+                let indexPath = IndexPath(row: index, section: 1)
+                let weekCell = self.tableView.cellForRow(at: indexPath)
+                
+                weekCell?.setBackgroundColor(by: week)
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,6 +77,15 @@ class WeeksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         navigationController?.popToRootViewController(animated: true)
     }
     
+    /**
+     Calculates the last view weeks based on the given input data
+     
+     - Parameters:
+        - week: the week when the calculation should start
+        - count: declares how many weeks the function has to calculate
+     
+     - Returns: the past requested weeks
+     */
     private func getLastWeeksFrom(start week: Week, counts count: Int) -> [Week] {
         var lastWeeks = [week]
         

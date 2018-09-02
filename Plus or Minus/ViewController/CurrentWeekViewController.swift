@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CurrentWeekViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class CurrentWeekViewController: UIViewController {
     @IBOutlet weak var weekLabel: UILabel!
     
     var week: Week!
+    var dayButtons = [DayButton]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,15 @@ class CurrentWeekViewController: UIViewController {
         week = Week(days: weekDates)
         week.days.forEach({ $0.loadDayActions() })
         
-        setUpScrollView()
+        // Refreshes the UI if a new day action was added in DetailDayViewControrller
+        NotificationCenter.default.addObserver(forName: .updateDayActionName, object: nil, queue: nil) { (notification) in
+            for index in 0..<self.week.days.count {
+                let day = self.week.days[index]
+                let dayButton = self.dayButtons[index]
+                
+                dayButton.setBackgroundColor(by: day)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,13 +42,15 @@ class CurrentWeekViewController: UIViewController {
         let lastDate = DateFormatter.formatDate(week.days.last!.date, with: weekTemplateStr)
         
         weekLabel.text = "\(firstDate) - \(lastDate)"
+        
+        setUpScrollView()
     }
     
     /**
-     Creates and configures a day button with the name given in the arguments
+     Creates and configures a day button with the day given in the arguments
      
      - Parameters:
-        - name: The name of the day
+        - day: The day
      
      - Returns: A configured DayButton object
      */
@@ -53,17 +65,21 @@ class CurrentWeekViewController: UIViewController {
      Creates and configures a day button with the name given in the arguments
     */
     private func setUpScrollView() {
+        dayButtons.removeAll()
+        scrollView.subviews.forEach({ $0.removeFromSuperview() })
+        
         let scrollWidth = scrollView.frame.size.width
         var itemCount: CGFloat = 0
         
         for day in week.days {
             let newX = scrollWidth / 2 + scrollWidth * CGFloat(itemCount)
-            
+        
             let dayBtn = createDayButton(from: day)
             dayBtn.setBackgroundColor(by: day)
             dayBtn.frame.origin.x = newX - (dayBtn.frame.width / 2)
             dayBtn.frame.origin.y = (scrollView.frame.size.height / 2) - (dayBtn.frame.height / 2)
             scrollView.addSubview(dayBtn)
+            dayButtons.append(dayBtn)
             
             itemCount = itemCount + 1
         }
