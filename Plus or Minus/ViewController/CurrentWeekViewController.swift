@@ -11,7 +11,7 @@ import CoreData
 
 class CurrentWeekViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: DaysScrollView!
     @IBOutlet weak var weekLabel: UILabel!
     
     var week: Week!
@@ -65,27 +65,22 @@ class CurrentWeekViewController: UIViewController {
      Creates and configures a day button with the name given in the arguments
     */
     private func setUpScrollView() {
-        dayButtons.removeAll()
-        scrollView.subviews.forEach({ $0.removeFromSuperview() })
-        
-        let scrollWidth = scrollView.frame.size.width
-        var itemCount: CGFloat = 0
-        
+        applyDayButtons()
+
+        scrollView.dayButtons = dayButtons
+        scrollView.setup()
+    }
+    
+    /**
+     Applys created dayButtons to Array
+     */
+    private func applyDayButtons() {
         for day in week.days {
-            let newX = scrollWidth / 2 + scrollWidth * CGFloat(itemCount)
-        
             let dayBtn = createDayButton(from: day)
             dayBtn.setBackgroundColor(by: day)
-            dayBtn.frame.origin.x = newX - (dayBtn.frame.width / 2)
-            dayBtn.frame.origin.y = (scrollView.frame.size.height / 2) - (dayBtn.frame.height / 2)
-            scrollView.addSubview(dayBtn)
-            dayButtons.append(dayBtn)
             
-            itemCount = itemCount + 1
+            dayButtons.append(dayBtn)
         }
-        
-        scrollView.clipsToBounds = false
-        scrollView.contentSize = CGSize(width: scrollWidth * itemCount, height: scrollView.frame.size.height)
     }
     
     @IBAction func dateBtnClicked() {
