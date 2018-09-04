@@ -21,7 +21,7 @@ class DayButton: UIButton {
     /// The buttons height
     static let HEIGHT: CGFloat = 200
     
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
         
         setStyle()
@@ -34,11 +34,15 @@ class DayButton: UIButton {
         - name: The name of the day the button represents on view level
      */
     convenience init(withDay day: Day) {
-        let frame = CGRect(x: 0, y: 0, width: DayButton.WIDTH, height: DayButton.WIDTH)
-        self.init(frame: frame)
+        self.init()
         
         let initials = String(day.dayName.prefix(3))
         setTitle(initials, for: .normal)
+    }
+    
+    convenience init() {
+        let frame = CGRect(x: 0, y: 0, width: DayButton.WIDTH, height: DayButton.WIDTH)
+        self.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
