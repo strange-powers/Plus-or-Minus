@@ -110,7 +110,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vnV-Ie-55j">
                                 <rect key="frame" x="0.0" y="256" width="375" height="154"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goR-V7-Khw">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goR-V7-Khw" customClass="DaysScrollView" customModule="Plus_or_Minus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="375" id="Yp2-Fm-8JW"/>
@@ -129,6 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ce9-6c-3Hf">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="8oY-Tf-HvL">
+                            <connections>
+                                <segue destination="o7z-Fy-uCq" kind="show" id="A9u-Be-fN2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" id="EOD-fC-sWV">
                             <connections>
                                 <segue destination="sfz-qK-goY" kind="show" id="jWf-n7-Hky"/>
@@ -144,6 +149,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-127.2" y="99.400299850074973"/>
+        </scene>
+        <!--Compare Days View Controller-->
+        <scene sceneID="eHA-5t-SWp">
+            <objects>
+                <viewController id="o7z-Fy-uCq" customClass="CompareDaysViewController" customModule="Plus_or_Minus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cZY-dc-uhS"/>
+                        <viewControllerLayoutGuide type="bottom" id="2us-kE-KBa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fOL-vz-tCL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mdv-m7-UBF">
+                                <rect key="frame" x="0.0" y="256" width="375" height="154"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDw-DO-Fya" customClass="DaysScrollView" customModule="Plus_or_Minus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="PXc-6V-GIZ"/>
+                                            <constraint firstAttribute="height" constant="154" id="j3G-8o-8jj"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbK-ce-qlu">
+                                <rect key="frame" x="164" y="92" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="2lU-Q6-n20"/>
+                                    <constraint firstAttribute="height" constant="30" id="3BB-BZ-LRE"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="lol:" destination="o7z-Fy-uCq" eventType="touchUpInside" id="CJl-BX-Ol0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mdv-m7-UBF" firstAttribute="centerY" secondItem="fOL-vz-tCL" secondAttribute="centerY" id="8tF-SM-nsl"/>
+                            <constraint firstItem="xbK-ce-qlu" firstAttribute="top" secondItem="cZY-dc-uhS" secondAttribute="bottom" constant="28" id="J4Z-aI-Vj2"/>
+                            <constraint firstItem="mdv-m7-UBF" firstAttribute="centerX" secondItem="fOL-vz-tCL" secondAttribute="centerX" id="pQx-3X-4KO"/>
+                            <constraint firstItem="xbK-ce-qlu" firstAttribute="centerX" secondItem="fOL-vz-tCL" secondAttribute="centerX" id="sKf-jC-XON"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="hDw-DO-Fya" id="y3p-bl-DAB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BzC-QH-8UE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127.2" y="945.87706146926541"/>
         </scene>
         <!--Title-->
         <scene sceneID="jE5-E6-zJu">
