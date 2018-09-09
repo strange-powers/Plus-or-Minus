@@ -36,8 +36,7 @@ class DayButton: UIButton {
     convenience init(withDay day: Day) {
         self.init()
         
-        let initials = String(day.dayName.prefix(3))
-        setTitle(initials, for: .normal)
+        setTitleWithInitials(title: day.dayName)
     }
     
     convenience init() {
@@ -47,6 +46,11 @@ class DayButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    public func setTitleWithInitials(title: String) {
+        let initials = String(title.prefix(3))
+        setTitle(initials, for: .normal)
     }
     
     /**
