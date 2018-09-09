@@ -54,9 +54,13 @@ class DayActionController {
         - predicate: a predicate to limit the DayAction objects
         - delegate: the delegate object for the NSFetchdResultsController
      */
-    private func fetchData(with sortDescriptors: [NSSortDescriptor], and predicate: NSPredicate?) {
+    private func fetchData(with sortDescriptors:[NSSortDescriptor] = [NSSortDescriptor(key: "createdAt", ascending: false)], use predicate: NSPredicate?, limited limit: Int?) {
         _fetchRequest.predicate = predicate
         _fetchRequest.sortDescriptors = sortDescriptors
+        
+        if let lim = limit {
+            _fetchRequest.fetchLimit = lim
+        }
         
         do {
             try _controller.performFetch()
@@ -74,16 +78,14 @@ class DayActionController {
         - delegate: the delegate object for the NSFetchdResultsController
      */
     func loadActionsBy(day date: Date) {
-        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         let predicate = NSPredicate(format: "day = %@", date as NSDate)
-        fetchData(with: [descriptor], and: predicate)
+        fetchData(use: predicate, limited: nil)
     }
     
     /**
      Loads all DayAction objects which lay in the given week
      */
     func loadActionsBy(week dates: [Date]) {
-        let descriptor = NSSortDescriptor(key: "createdAt", ascending: false)
         var predicates = [NSPredicate]()
         
         for date in dates {
@@ -93,7 +95,14 @@ class DayActionController {
         
         let predicateCompound = NSCompoundPredicate(type: .or, subpredicates: predicates)
         
-        fetchData(with: [descriptor], and: predicateCompound)
+        fetchData(use: predicateCompound, limited: nil)
+    }
+    
+    /**
+     Loads all DayActions with Limit
+     */
+    func loadActions(with limit: Int?) {
+        fetchData(use: nil, limited: limit)
     }
     
     /**
