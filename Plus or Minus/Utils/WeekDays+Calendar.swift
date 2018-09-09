@@ -17,9 +17,19 @@ extension Calendar {
      
      - Return: An array of date objects
     */
-    func getWeekDates(from date: Date) -> [Date] {
+    public func getWeekDates(from date: Date) -> [Date] {
         let noon = self.date(bySettingHour: 12, minute: 0, second: 0, of: date)!
-        var dayOfWeek = component(.weekday, from: noon)
+        let dayOfWeek = getDayOfWeek(from: noon)
+        let weekdays = range(of: .weekday, in: .weekOfMonth, for: noon)!
+        
+        let days = (weekdays.lowerBound ..< weekdays.upperBound)
+            .compactMap { self.date(byAdding: .day, value: $0 - dayOfWeek, to: noon) }
+        
+        return days
+    }
+    
+    public func getDayOfWeek(from date: Date) -> Int {
+        var dayOfWeek = component(.weekday, from: date)
         
         if dayOfWeek == 1 {
             dayOfWeek = 7
@@ -27,10 +37,6 @@ extension Calendar {
             dayOfWeek = dayOfWeek - 1
         }
         
-        let weekdays = range(of: .weekday, in: .weekOfMonth, for: noon)!
-        let days = (weekdays.lowerBound ..< weekdays.upperBound)
-            .compactMap { self.date(byAdding: .day, value: $0 - dayOfWeek, to: noon) }
-        
-        return days
+        return dayOfWeek
     }
 }
