@@ -174,24 +174,11 @@
                                     </scrollView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbK-ce-qlu">
-                                <rect key="frame" x="164" y="92" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="2lU-Q6-n20"/>
-                                    <constraint firstAttribute="height" constant="30" id="3BB-BZ-LRE"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="lol:" destination="o7z-Fy-uCq" eventType="touchUpInside" id="CJl-BX-Ol0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mdv-m7-UBF" firstAttribute="centerY" secondItem="fOL-vz-tCL" secondAttribute="centerY" id="8tF-SM-nsl"/>
-                            <constraint firstItem="xbK-ce-qlu" firstAttribute="top" secondItem="cZY-dc-uhS" secondAttribute="bottom" constant="28" id="J4Z-aI-Vj2"/>
                             <constraint firstItem="mdv-m7-UBF" firstAttribute="centerX" secondItem="fOL-vz-tCL" secondAttribute="centerX" id="pQx-3X-4KO"/>
-                            <constraint firstItem="xbK-ce-qlu" firstAttribute="centerX" secondItem="fOL-vz-tCL" secondAttribute="centerX" id="sKf-jC-XON"/>
                         </constraints>
                     </view>
                     <connections>
