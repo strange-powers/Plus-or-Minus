@@ -33,31 +33,13 @@ class Day: Rateable {
     
     var goodDayActions: [DayAction] {
         get {
-            let actions = dayActions.compactMap { (action) -> DayAction? in
-                if action.conclusion {
-                    return action
-                }
-                
-                return nil
-            }
-        
-            return actions
-            
+            return DayAction.getGoodDayActions(from: dayActions)
         }
     }
     
     var badDayActions: [DayAction] {
         get {
-            let actions = dayActions.compactMap { (action) -> DayAction? in
-                if !action.conclusion {
-                    return action
-                }
-                
-                return nil
-            }
-            
-            return actions
-            
+            return DayAction.getBadDayActions(from: dayActions)
         }
     }
     

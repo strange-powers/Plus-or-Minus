@@ -66,23 +66,10 @@ class WeekDayDayAction: Rateable {
         - dayActions: the day actions on which the calculation is based
     */
     private func setProportions(for dayActions: [DayAction]) {
-        let goodDayActions = dayActions.compactMap { (action) -> DayAction? in
-            if action.conclusion {
-                return action
-            }
-    
-            return nil
-        }
-        
-        let badDayActions = dayActions.compactMap { (action) -> DayAction? in
-            if !action.conclusion {
-                return action
-            }
-            
-            return nil
-        }
-        
+        let goodDayActions = DayAction.getGoodDayActions(from: dayActions)
+        let badDayActions = DayAction.getGoodDayActions(from: dayActions)
         let dayActionsCount = Float(dayActions.count)
+        
         _goodProportion = Float.calculateProportions(with: dayActionsCount, dividedBy: Float(goodDayActions.count))
         _badProportion = Float.calculateProportions(with: dayActionsCount, dividedBy: Float(badDayActions.count))
     }
