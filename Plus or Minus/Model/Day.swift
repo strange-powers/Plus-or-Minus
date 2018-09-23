@@ -78,26 +78,14 @@ class Day: Rateable {
         let allActionsCount = Float(dayActions.count)
         let goodDayActionsCount = Float(goodDayActions.count)
         
-        if goodDayActionsCount == 0 {
-            return 0
-        }
-        
-        let proportion = goodDayActionsCount / allActionsCount
-        
-        return proportion
+        return Float.calculateProportions(with: allActionsCount, dividedBy: goodDayActionsCount)
     }
     
     var badProportion: Float {
         let allActionsCount = Float(dayActions.count)
         let badDayActionsCount = Float(badDayActions.count)
         
-        if badDayActionsCount == 0 {
-            return 0
-        }
-        
-        let proportion = badDayActionsCount / allActionsCount
-        
-        return proportion
+        return Float.calculateProportions(with: allActionsCount, dividedBy: badDayActionsCount)
     }
     
     init(date: Date) {

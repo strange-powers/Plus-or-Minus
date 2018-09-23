@@ -75,6 +75,8 @@ class CurrentWeekViewController: UIViewController {
      Applys created dayButtons to Array
      */
     private func applyDayButtons() {
+        dayButtons.removeAll()
+        
         for day in week.days {
             let dayBtn = createDayButton(from: day)
             dayBtn.setBackgroundColor(by: day)

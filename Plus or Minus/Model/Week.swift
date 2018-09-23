@@ -38,28 +38,16 @@ class Week: NSObject, Rateable {
     
     var goodProportion: Float {
         let goodActionsCount = Float(goodActions.count)
-        
-        if goodActionsCount == 0 {
-            return 0
-        }
-        
         let allActionsCount = goodActionsCount + Float(badActions.count)
-        let proportion = goodActionsCount / allActionsCount
         
-        return proportion
+        return Float.calculateProportions(with: allActionsCount, dividedBy: goodActionsCount)
     }
     
     var badProportion: Float {
-        let badActionsCount = Float(goodActions.count)
-        
-        if badActionsCount == 0 {
-            return 0
-        }
-        
+        let badActionsCount = Float(badActions.count)
         let allActionsCount = badActionsCount + Float(goodActions.count)
-        let proportion = badActionsCount / allActionsCount
         
-        return proportion
+        return Float.calculateProportions(with: allActionsCount, dividedBy: badActionsCount)
     }
     
     init(days: [Day]) {

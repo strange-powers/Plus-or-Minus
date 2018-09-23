@@ -26,6 +26,7 @@ class CompareDaysViewController: UIViewController {
         var dayButtons = [DayButton]()
         
         if let todayLastYear = Calendar.current.date(byAdding: .day, value: -365, to: Date()) {
+            // TODO: Replace this with translations
             let dayNamesStr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
             let dayNamesEn = [
                 Calendar.DayName.Monday,
